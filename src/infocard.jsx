@@ -43,6 +43,9 @@ function InfoCard(props) {
           <div className="">
             <p>Rating : {props.movie.vote_average}*</p>
           </div>
+          <div className="">
+            <p>PG Rating : {props.pg}</p>
+          </div>
         </div>
       </div>
     </>
@@ -51,7 +54,7 @@ function InfoCard(props) {
 
 export default InfoCard;
 
-InfoCard.PropTypes = {
+InfoCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     overview: PropTypes.string.isRequired,

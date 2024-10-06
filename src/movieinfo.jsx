@@ -36,8 +36,11 @@ function MovieInfo() {
     <>
       <div>
         <div className="">
-          <InfoPoster backdrop={movie.backdrop_path} title={movie.title} />
-          <InfoCard movie={movie} />
+          <InfoPoster
+            backdrop={movie.data.backdrop_path}
+            title={movie.data.title}
+          />
+          <InfoCard movie={movie.data} pg={movie.pg_rating} />
         </div>
       </div>
     </>
