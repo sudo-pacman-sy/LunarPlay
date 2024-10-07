@@ -7,6 +7,12 @@ function InfoCard(props) {
       {(index < props.movie.genres.length - 1 && ",") || "."}
     </span>
   ));
+  const stream = props.streamProvider.map((stream1, index) => (
+    <span key={index} className="mr-2">
+      {stream1}
+      {(index < props.streamProvider.length - 1 && ",") || "."}
+    </span>
+  ));
 
   return (
     <>
@@ -45,6 +51,12 @@ function InfoCard(props) {
           </div>
           <div className="">
             <p>PG Rating : {props.pg}</p>
+          </div>
+          <div className="">
+            <p>
+              Buy/Rent : {""}
+              {stream != "" ? stream : " Movie not available in your location"}
+            </p>
           </div>
         </div>
       </div>

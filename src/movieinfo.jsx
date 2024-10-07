@@ -29,7 +29,9 @@ function MovieInfo() {
   }
 
   if (!movie) {
-    return <div className="text-white">No movie found!</div>;
+    return (
+      <div className="text-white">Server Busy! Reload or Try again later</div>
+    );
   }
 
   return (
@@ -40,7 +42,11 @@ function MovieInfo() {
             backdrop={movie.data.backdrop_path}
             title={movie.data.title}
           />
-          <InfoCard movie={movie.data} pg={movie.pg_rating} />
+          <InfoCard
+            movie={movie.data}
+            pg={movie.pg_rating}
+            streamProvider={movie.allProviders}
+          />
         </div>
       </div>
     </>
