@@ -25,12 +25,12 @@ function MovieInfo() {
   }, [id]);
 
   if (loading) {
-    return <div className="text-white">Loading...</div>;
+    return <div className="bg-white">Loading Information...</div>;
   }
 
   if (!movie) {
     return (
-      <div className="text-white">Server Busy! Reload or Try again later</div>
+      <div className="bg-white">Server Busy! Reload or Try again later</div>
     );
   }
 
@@ -46,6 +46,9 @@ function MovieInfo() {
             movie={movie.data}
             pg={movie.pg_rating}
             streamProvider={movie.allProviders}
+            videoKey={movie.videoKey}
+            casts={movie.casts}
+            similarMovie={movie.similars}
           />
         </div>
       </div>
