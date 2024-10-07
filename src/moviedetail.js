@@ -38,8 +38,8 @@ const fetchMovieDetails = async (id) => {
       };
     });
     const similars = similardata.data.results;
-
     let allProviders = [];
+
     // Extract specific provider details (Buy, Rent, Flatrate)
     if (
       !streamResponse ||
