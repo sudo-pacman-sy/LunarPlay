@@ -1,18 +1,7 @@
 import PropTypes from "prop-types";
+import InfoDetail from "./infodetail";
 
 function InfoCard(props) {
-  const genres = props.movie.genres.map((genre, index) => (
-    <span key={index} className="mr-2">
-      {genre.name}
-      {(index < props.movie.genres.length - 1 && ",") || "."}
-    </span>
-  ));
-  const stream = props.streamProvider.map((stream1, index) => (
-    <span key={index} className="mr-2">
-      {stream1}
-      {index < props.streamProvider.length - 1 ? "," : "."}
-    </span>
-  ));
   const cast = props.casts.map((castMember, index) => (
     <div key={index} className="flex items-center space-x-4 mb-4 h-full w-full">
       <img
@@ -49,38 +38,14 @@ function InfoCard(props) {
         </div>
         <div className="relative left-[350px] w-[1.4px] h-full bg-gray-500 mt-2 z-10"></div>
       </div>
-      <div className="absolute top-[590px] bg-[#111111] h-full w-[1322px] text-rose-600">
+      <div className="absolute top-[590px] bg-[#111111] min-h-screen w-[1322px] text-rose-600">
         <div className="relative left-[364px] h-full w-[900px]">
-          <div className="text-5xl ">
-            <h1>{props.movie.title}</h1>
-          </div>
-          <div className="">
-            <h2>{props.movie.tagline}</h2>
-          </div>
-          <div className="">
-            <p>Overview : {props.movie.overview}</p>
-          </div>
-          <div>
-            <p>Genres : {genres}</p>
-          </div>
-          <div className="">
-            <p>Release Date : {props.movie.release_date}</p>
-          </div>
-          <div className="">
-            <p>Runtime : {props.movie.runtime} mins</p>
-          </div>
-          <div className="">
-            <p>Rating : {props.movie.vote_average}*</p>
-          </div>
-          <div className="">
-            <p>PG Rating : {props.pg}</p>
-          </div>
-          <div className="">
-            <p>
-              Buy/Rent : {""}
-              {stream != "" ? stream : " Movie not available in your location"}
-            </p>
-          </div>
+          <InfoDetail
+            movie={props.movie}
+            streamProvider={props.streamProvider}
+            pg={props.pg}
+          />
+
           <iframe
             width="560"
             height="315"
