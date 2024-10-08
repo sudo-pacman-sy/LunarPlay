@@ -2,11 +2,11 @@ import axios from "axios";
 
 const fetchMovieDetails = async (id) => {
   const url = `https://api.themoviedb.org/3/movie/${id}`;
-  const PGurl1 = `https://api.themoviedb.org/3/movie/${id}/release_dates`;
-  const stProvide = `https://api.themoviedb.org/3/movie/${id}/watch/providers`;
-  const trailerurl = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
-  const casturl = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`;
-  const similarurl = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`;
+  const PGurl1 = `${url}/release_dates`;
+  const stProvide = `${url}/watch/providers`;
+  const trailerurl = `${url}/videos?language=en-US`;
+  const casturl = `${url}/credits?language=en-US`;
+  const similarurl = `${url}/similar?language=en-US&page=1`;
   const options = {
     method: "GET",
     headers: {
@@ -18,17 +18,19 @@ const fetchMovieDetails = async (id) => {
 
   try {
     // Api Calls
-    const response1 = await axios.get(url, options);
+    const response = await axios.get(url, options);
     const PGresponse = await axios.get(PGurl1, options);
     const streamResponse = await axios.get(stProvide, options);
     const trailerdata = await axios.get(trailerurl, options);
     const castdata = await axios.get(casturl, options);
     const similardata = await axios.get(similarurl, options);
+
     const videosresult = trailerdata.data.results;
     const youtubeVideo = videosresult.findLast(
       (video) => video.site == "YouTube" && video.type == "Trailer"
     );
     const videoKey = youtubeVideo.key;
+
     const castResult = castdata.data.cast;
     const casts = castResult.slice(0, 10).map((cast) => {
       return {
@@ -38,42 +40,31 @@ const fetchMovieDetails = async (id) => {
       };
     });
     const similars = similardata.data.results;
+
     let allProviders = [];
 
     // Extract specific provider details (Buy, Rent, Flatrate)
     if (
-      !streamResponse ||
-      !streamResponse.data ||
-      !streamResponse.data.results ||
-      !streamResponse.data.results.IN
+      streamResponse.data.results &&
+      Object.keys(streamResponse.data.results).length > 0
     ) {
-      return [];
-    } else if (
-      streamResponse.data.results.IN.buy ||
-      streamResponse.data.results.IN.rent ||
-      streamResponse.data.results.IN.flatrate
-    ) {
-      const sp = streamResponse.data.results.IN.buy
-        ? streamResponse.data.results.IN.buy.map((pro) => {
-            return pro.provider_name;
-          })
+      const providers = streamResponse.data.results.IN || {};
+      const sp = providers.buy
+        ? providers.buy.map((pro) => pro.provider_name)
+        : [];
+      const spr = providers.rent
+        ? providers.rent.map((pro) => pro.provider_name)
+        : [];
+      const spf = providers.flatrate
+        ? providers.flatrate.map((pro) => pro.provider_name)
         : [];
 
-      const spr = streamResponse.data.results.IN.rent
-        ? streamResponse.data.results.IN.rent.map((pro) => {
-            return pro.provider_name;
-          })
-        : [];
-
-      const spf = streamResponse.data.results.IN.flatrate
-        ? streamResponse.data.results.IN.flatrate.map((pro) => {
-            return pro.provider_name;
-          })
-        : [];
-      const allProvider = sp.concat(spr).concat(spf);
+      const allProvider = [...sp, ...spr, ...spf];
       allProviders = [
         ...new Set(allProvider.filter((provider) => provider !== undefined)),
       ];
+    } else {
+      console.warn("No streaming providers available for this movie.");
     }
 
     // Get the PG rating for US release dates
@@ -86,7 +77,7 @@ const fetchMovieDetails = async (id) => {
 
     // Return the movie details, pg rating and providers as an object
     return {
-      data: response1.data,
+      data: response.data,
       pg_rating,
       allProviders,
       videoKey,

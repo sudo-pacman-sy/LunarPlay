@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 import fetchMovieDetails from "./moviedetail";
 import InfoPoster from "./infoposter";
 import InfoCard from "./infocard";
-
+import Card from "./Card";
 function MovieInfo() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
+  const random = Math.floor(Math.random(15) * 10 + 1);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,29 +29,33 @@ function MovieInfo() {
     return <div className="bg-white">Loading Information...</div>;
   }
 
-  if (!movie) {
+  if (!movie.data) {
     return (
       <div className="bg-white">Server Busy! Reload or Try again later</div>
     );
   }
 
+  const genre = movie.data.genres[0].id;
+  const similarMovies = [
+    `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${random}&sort_by=popularity.desc&vote_count.gte=1000&with_genres=${genre}`,
+  ];
+
   return (
     <>
-      <div>
-        <div className="">
-          <InfoPoster
-            backdrop={movie.data.backdrop_path}
-            title={movie.data.title}
-          />
-          <InfoCard
-            movie={movie.data}
-            pg={movie.pg_rating}
-            streamProvider={movie.allProviders}
-            videoKey={movie.videoKey}
-            casts={movie.casts}
-            similarMovie={movie.similars}
-          />
-        </div>
+      <div id="poster and info" className="">
+        <InfoPoster
+          backdrop={movie.data.backdrop_path}
+          title={movie.data.title}
+        />
+        <InfoCard
+          movie={movie.data}
+          pg={movie.pg_rating}
+          streamProvider={movie.allProviders}
+          videoKey={movie.videoKey}
+          casts={movie.casts}
+          similarMovie={movie.similars}
+        />
+        <Card api={similarMovies} />
       </div>
     </>
   );

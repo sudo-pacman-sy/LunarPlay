@@ -3,10 +3,12 @@ import NavBar from "./navbar";
 
 function Infopage() {
   return (
-    <div className="bg-[#111111] h-full">
-      <NavBar />
-      <MovieInfo />
-    </div>
+    <>
+      <div className="bg-[#111111]">
+        <NavBar />
+        <MovieInfo />
+      </div>
+    </>
   );
 }
 

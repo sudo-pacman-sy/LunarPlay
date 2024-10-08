@@ -4,6 +4,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import fetchMovies from "./movies";
 import { useNavigate } from "react-router-dom";
+import starImage from "../src/assets/rating.png";
 
 function Card({ api }) {
   const [movies, setMovies] = useState([]);
@@ -36,7 +37,14 @@ function Card({ api }) {
     async function respond() {
       try {
         const moviedata = await fetchMovies(api);
-        setMovies(moviedata);
+        if (moviedata && moviedata.length > 0) {
+          const filteredMovies = moviedata.filter(
+            (movie) => movie.posterPath && movie.posterPath !== ""
+          );
+          setMovies(filteredMovies);
+        } else {
+          console.error("No movie data available.");
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -80,7 +88,7 @@ function Card({ api }) {
             <div className="flex justify-between">
               <p className="text-sm text-blue-700">{movie.date}</p>
               <p className="flex text-sm gap-0.4">
-                <img src="src/assets/rating.png" className="size-4 mt-0.5" />
+                <img src={starImage} className="size-4 mt-0.5" />
                 {movie.voteAverage.toFixed(1)}
               </p>
             </div>

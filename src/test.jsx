@@ -1,11 +1,7 @@
-function Test(props) {
+function Test() {
   return (
-    <div className="relative h-[1322px]">
-      <img
-        src={`https://image.tmdb.org/t/p/original${props.movie.poster_path}`}
-        alt=""
-        className="sticky top-0 h-[340px] w-[288px]"
-      />
+    <div className="relative bg-sky-500 h-32 w-32 ml-96">
+      <p className="text-black font-5xl">HEllo world</p>
     </div>
   );
 }

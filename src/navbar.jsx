@@ -1,6 +1,6 @@
 function Navbar() {
   return (
-    <div className="p-4 bg-[#ff004c]">
+    <div id="Navbar" className="p-4 bg-[#ff004c]">
       <nav>
         <h1 className="text-2xl absolute font-bold flex top-3">LunarPlay</h1>
         <ul className="flex justify-center content-center gap-16">
