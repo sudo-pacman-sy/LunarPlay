@@ -3,7 +3,7 @@ import { Trending, Action, Thriller, Comedy, TopRated } from "./Headings";
 import MainPoster from "./mainPoster";
 import Navbar from "./navbar";
 
-const random = Math.floor(Math.random(15) * 10 + 1);
+const random = Math.floor(Math.random(20) * 10 + 1);
 
 const popularMovieUrls = [
   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",

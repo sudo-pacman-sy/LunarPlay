@@ -8,7 +8,7 @@ function MovieInfo() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
-  const random = Math.floor(Math.random(15) * 10 + 1);
+  const random = Math.floor(Math.random(20) * 10 + 1);
 
   useEffect(() => {
     async function fetchData() {

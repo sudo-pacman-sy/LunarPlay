@@ -24,7 +24,7 @@ function InfoDetail(props) {
         <h1>{props.movie.title}</h1>
       </div>
       <div className="">
-        <h2>{props.movie.tagline}</h2>
+        <h2>{props.movie.tagline.toUpperCase()}</h2>
       </div>
       <div className="">
         <p>Overview : {props.movie.overview}</p>

@@ -26,7 +26,7 @@ const fetchMovieDetails = async (id) => {
     const similardata = await axios.get(similarurl, options);
 
     const videosresult = trailerdata.data.results;
-    const youtubeVideo = videosresult.findLast(
+    const youtubeVideo = videosresult.find(
       (video) => video.site == "YouTube" && video.type == "Trailer"
     );
     const videoKey = youtubeVideo.key;

@@ -3,7 +3,7 @@ function InfoTrailer(props) {
     <iframe
       width="560"
       height="315"
-      src={`https://www.youtube.com/embed/${props.videokey}?controls=0&rel=1`}
+      src={`https://www.youtube.com/embed/${props.videokey}?rel=1`}
       title={`${props.title} Trailer`}
       allowFullScreen
       className="rounded-lg border-2 border-sky-600"

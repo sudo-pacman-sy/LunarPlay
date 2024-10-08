@@ -1,24 +1,35 @@
 function InfoCast(props) {
-  const cast = props.cast.map((cast, index) => (
-    <div key={index} className="flex items-center space-x-4 mb-4 h-full w-full">
-      <img
-        src={
-          cast.profilePath
-            ? `https://image.tmdb.org/t/p/w200${cast.profilePath}`
-            : "../src/assets/emptyprofile.jpg"
-        }
-        alt={cast.name}
-        className="w-16 h-16 rounded-full object-cover"
-      />
-      <div>
-        <p className="font-bold text-lg">{cast.name}</p>
-        <p className="text-sm text-gray-500">as {cast.character}</p>
-      </div>
-    </div>
-  ));
+  const castMembers = props.cast.map((cast) => ({
+    profileImage: cast.profilePath
+      ? `https://image.tmdb.org/t/p/w200${cast.profilePath}`
+      : "../src/assets/emptyprofile.jpg",
+    name: cast.name,
+    character: cast.character,
+  }));
+
   return (
-    <div className=" min-h-full w-full">
-      <div>Casts : {cast}</div>
+    <div className="my-4">
+      Casts :
+      <div className="max-h-[150px] max-w-[900px] flex gap-4 border-4 border-gray-600 overflow-x-auto p-6 rounded-xl scrollbar-thin scrollbar-thumb-gray-400">
+        {castMembers.map((member, index) => (
+          <div
+            key={index}
+            className="flex items-center space-x-4 min-h-[88px] min-w-64 py-2 pl-2 border-2 rounded-xl"
+          >
+            <img
+              src={member.profileImage}
+              alt={member.name}
+              className="w-16 h-16 rounded-full object-cover"
+            />
+            <div>
+              <p className="font-bold text-lg line-clamp-2">{member.name}</p>
+              <p className="text-sm text-gray-500 line-clamp-2">
+                as {member.character}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
