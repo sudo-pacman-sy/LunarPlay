@@ -11,8 +11,12 @@ export default {
       fontFamily: {
         raleway: ["Raleway", "sans-serif"],
         outfit: ["Outfit", "sans-serif"],
-        cinzel: ["Cinzel Decorative", "sans-serif"],
+        cinzel: ['"Cinzel Decorative"', "sans-serif"],
         palanquin: ["Palanquin", "sans-serif"],
+        bebas: ['"Bebas Neue"', "sans-serif"],
+        bona: ['"Bona Nova SC"', "serif"],
+        k2d: ["K2D", "serif"],
+        afacad: ['"Afacad Flux"', "serif"],
       },
     },
   },

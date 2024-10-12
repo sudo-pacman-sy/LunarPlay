@@ -40,4 +40,20 @@ function TopRated() {
   );
 }
 
-export { Trending, Action, Thriller, Comedy, TopRated };
+function Trailer() {
+  return (
+    <div className="py-2 pb-3 text-3xl">
+      <span className="font-outfit text-[#E8B86D]">Trailer :</span>
+    </div>
+  );
+}
+
+function Castheading() {
+  return (
+    <div className="pb-3 text-3xl">
+      <span className="font-outfit text-[#E8B86D]">Casts : </span>
+    </div>
+  );
+}
+
+export { Trending, Action, Thriller, Comedy, TopRated, Trailer, Castheading };

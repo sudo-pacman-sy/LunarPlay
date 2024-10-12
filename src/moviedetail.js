@@ -32,6 +32,16 @@ const fetchMovieDetails = async (id) => {
     const videoKey = youtubeVideo.key;
 
     const castResult = castdata.data.cast;
+    const directors = castdata.data.crew.filter(
+      (crew) => crew.job === "Director"
+    );
+    let director = "";
+    if (directors.length > 0) {
+      director = directors[0].name;
+    } else {
+      director = "No director found";
+    }
+
     const casts = castResult.slice(0, 10).map((cast) => {
       return {
         name: cast.name,
@@ -83,6 +93,7 @@ const fetchMovieDetails = async (id) => {
       videoKey,
       casts,
       similars,
+      director,
     };
   } catch (error) {
     console.error("Error fetching movie details:", error);

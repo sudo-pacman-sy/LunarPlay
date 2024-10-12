@@ -39,6 +39,7 @@ function MovieInfo() {
   const similarMovies = [
     `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${random}&sort_by=popularity.desc&vote_count.gte=1000&with_genres=${genre}`,
   ];
+  console.log(movie.director);
 
   return (
     <>
@@ -54,6 +55,7 @@ function MovieInfo() {
           videoKey={movie.videoKey}
           casts={movie.casts}
           similarMovie={movie.similars}
+          director={movie.director}
         />
         <Card api={similarMovies} />
       </div>
