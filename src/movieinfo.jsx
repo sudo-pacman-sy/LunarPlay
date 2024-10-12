@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import fetchMovieDetails from "./moviedetail";
-import InfoPoster from "./infoposter";
-import InfoCard from "./infocard";
+import InfoPoster from "./infoPoster";
+import InfoCard from "./infoCard";
 import Card from "./Card";
+import { Similarmovies } from "./Headings";
 function MovieInfo() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
@@ -14,6 +15,7 @@ function MovieInfo() {
     async function fetchData() {
       try {
         const movieData = await fetchMovieDetails(id);
+
         setMovie(movieData);
       } catch (error) {
         console.error("Error fetching movie details:", error);
@@ -39,7 +41,6 @@ function MovieInfo() {
   const similarMovies = [
     `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${random}&sort_by=popularity.desc&vote_count.gte=1000&with_genres=${genre}`,
   ];
-  console.log(movie.director);
 
   return (
     <>
@@ -57,6 +58,7 @@ function MovieInfo() {
           similarMovie={movie.similars}
           director={movie.director}
         />
+        <Similarmovies />
         <Card api={similarMovies} />
       </div>
     </>

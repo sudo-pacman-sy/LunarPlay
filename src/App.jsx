@@ -1,5 +1,5 @@
 import HomePage from "./Homepage";
-import InfoPage from "./infopage";
+import InfoPage from "./infoPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {

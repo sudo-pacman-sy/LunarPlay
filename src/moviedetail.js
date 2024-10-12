@@ -25,12 +25,22 @@ const fetchMovieDetails = async (id) => {
     const castdata = await axios.get(casturl, options);
     const similardata = await axios.get(similarurl, options);
 
+    // Youtube Trailer
     const videosresult = trailerdata.data.results;
-    const youtubeVideo = videosresult.find(
-      (video) => video.site == "YouTube" && video.type == "Trailer"
-    );
-    const videoKey = youtubeVideo.key;
+    const trailerVideos = videosresult
+      .filter((video) => video.site === "YouTube" && video.type === "Trailer")
+      .slice(0, 2); // Get up to 2 trailers
 
+    const teaserVideos = videosresult.filter(
+      (video) => video.site === "YouTube" && video.type === "Teaser"
+    );
+
+    const youtubeVideo = trailerVideos.length
+      ? trailerVideos // Use trailers if available
+      : teaserVideos; // Fallback to teasers if no trailers found
+    const videoKey = youtubeVideo.map((video) => video.key);
+
+    // Cast and Director Details
     const castResult = castdata.data.cast;
     const directors = castdata.data.crew.filter(
       (crew) => crew.job === "Director"
@@ -41,7 +51,6 @@ const fetchMovieDetails = async (id) => {
     } else {
       director = "No director found";
     }
-
     const casts = castResult.slice(0, 10).map((cast) => {
       return {
         name: cast.name,
@@ -49,6 +58,8 @@ const fetchMovieDetails = async (id) => {
         profilePath: cast.profile_path,
       };
     });
+
+    // Similar movies
     const similars = similardata.data.results;
 
     let allProviders = [];

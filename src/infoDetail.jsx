@@ -71,7 +71,7 @@ function InfoDetail(props) {
           <p className="font-bold text-[#9ab] brightness-110">
             PG Rating&nbsp;:&nbsp;
           </p>
-          <p>{props.pg}</p>
+          {props.pg ? <p>{props.pg}</p> : <p>No Rating available</p>}
         </div>
         <div className="my-1 flex">
           <p className="font-bold text-[#9ab] brightness-110">

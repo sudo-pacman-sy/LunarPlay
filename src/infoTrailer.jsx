@@ -1,10 +1,11 @@
 import { Trailer } from "./Headings";
+import YouTubePlayer from "./YoutubePlayer";
 
 function InfoTrailer(props) {
   return (
     <>
       <Trailer />
-      <iframe
+      {/* <iframe
         width="790"
         height="415"
         src={`https://www.youtube.com/embed/${props.videokey}?rel=1`}
@@ -14,7 +15,8 @@ function InfoTrailer(props) {
         onError={() =>
           console.log("Video cannot be displayed. It may be private.")
         }
-      />
+      /> */}
+      <YouTubePlayer videoIds={props.videokey} />
     </>
   );
 }

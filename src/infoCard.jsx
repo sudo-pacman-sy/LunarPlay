@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import InfoDetail from "./infodetail";
+import InfoDetail from "./infoDetail";
 import InfoTrailer from "./infoTrailer";
 import InfoCast from "./infoCast";
 
@@ -17,11 +17,11 @@ function InfoCard(props) {
             className="w-full h-[350px] rounded-xl "
           />
           <div className="">
-            <div className="text-white flex p-1 justify-center text-[#9ab]">
+            <div className="flex p-1 justify-center text-[#9ab]">
               <p>{props.movie.release_date.split("-")[0]} •</p>
               <p className="">Directed By&nbsp;</p>
             </div>
-            <p className="text-white flex justify-center -mt-[0.5px] text-[#9ab]">
+            <p className="flex justify-center -mt-[0.5px] text-[#9ab]">
               {props.director}
             </p>
           </div>
