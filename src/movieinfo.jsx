@@ -5,6 +5,7 @@ import InfoPoster from "./infoPoster";
 import InfoCard from "./infoCard";
 import Card from "./Card";
 import { Similarmovies } from "./Headings";
+import Footer from "./Footer";
 function MovieInfo() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
@@ -60,6 +61,7 @@ function MovieInfo() {
         />
         <Similarmovies />
         <Card api={similarMovies} />
+        <Footer />
       </div>
     </>
   );

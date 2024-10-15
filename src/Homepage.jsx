@@ -2,6 +2,7 @@ import Card from "./Card";
 import { Trending, Action, Thriller, Comedy, TopRated } from "./Headings";
 import MainPoster from "./mainPoster";
 import Navbar from "./navbar";
+import Footer from "./Footer";
 
 const random = Math.floor(Math.random(20) * 10 + 1);
 
@@ -46,6 +47,7 @@ function HomePage() {
         <Card api={comedyMovies} />
         <TopRated />
         <Card api={topRatedMovies} />
+        <Footer />
       </div>
     </>
   );
