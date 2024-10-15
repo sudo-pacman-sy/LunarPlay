@@ -1,8 +1,20 @@
+import { useNavigate } from "react-router-dom";
+
 function Navbar() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/");
+  };
+
   return (
     <div id="Navbar" className="p-4 bg-[#ff004c]">
       <nav>
-        <h1 className="text-2xl absolute font-bold flex top-3">LunarPlay</h1>
+        <h1
+          className="text-2xl absolute font-bold flex top-3 cursor-pointer"
+          onClick={handleClick}
+        >
+          LunarPlay
+        </h1>
         <ul className="flex justify-center content-center gap-16">
           <li className="group transition-all duration-300 ease-in-out">
             <a

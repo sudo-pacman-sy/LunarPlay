@@ -6,6 +6,10 @@ import Footer from "./Footer";
 
 const random = Math.floor(Math.random(20) * 10 + 1);
 
+const trendingtoday = [
+  "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
+];
+
 const popularMovieUrls = [
   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=2",
@@ -36,7 +40,7 @@ function HomePage() {
     <>
       <Navbar />
       <div className="bg-[#111111] h-full">
-        <MainPoster api={popularMovieUrls} />
+        <MainPoster api={trendingtoday} />
         <Trending />
         <Card api={popularMovieUrls} />
         <Action />
