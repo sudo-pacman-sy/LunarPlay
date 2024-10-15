@@ -89,10 +89,9 @@ const fetchMovieDetails = async (id) => {
     }
 
     // Get the PG rating for US release dates
-    const pgrate = PGresponse.data.results.filter((resp) => {
-      return resp.iso_3166_1 == "US";
-    })[0];
-    const pg_rating = pgrate.release_dates[0]
+    const pgrate =
+      PGresponse?.data?.results?.find((resp) => resp.iso_3166_1 === "US") || {};
+    const pg_rating = pgrate.release_dates?.length
       ? pgrate.release_dates[pgrate.release_dates.length - 1].certification
       : "No rating available";
 
