@@ -33,6 +33,7 @@ To get started with the Movie Database App, follow these steps:
 
 - In the root directory of the project, create a .env file.
 - Add your [TMDB](https://developer.themoviedb.org/docs/getting-started) API key to the .env file:
+
   ```bash
   TMDB_KEY=your_api_key_here
   ```
@@ -52,3 +53,25 @@ To get started with the Movie Database App, follow these steps:
 6. **Access the app:**
 
 - Open your browser and navigate to `http://localhost:5173`
+
+## Screenshots
+
+![Homepage](images/homepage1.png)
+
+![Homepage](images/homepage2.png)
+
+![Movie Details](images/details1.png)
+
+![Movie Details](images/details2.png)
+
+## Usage
+
+Use the application to explore recommended movies and click on a movie to view detailed information.
+
+## Contributing
+
+Contributions are welcome! To contribute to the Movie Database App, fork the repository, create a new branch, make your changes, and commit them. After that, push to the branch and open a pull request.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
