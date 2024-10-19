@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import YouTube from "react-youtube";
 
 const YouTubePlayer = (props) => {
-  const [hasError, setHasError] = useState(false); // State to track errors
+  const [hasError, setHasError] = useState(false);
 
   const opts = {
     height: "380",
@@ -13,13 +13,12 @@ const YouTubePlayer = (props) => {
   };
 
   const onReady = (event) => {
-    // You can do something when the player is ready
     console.log("Player is ready");
   };
 
   const onError = (event) => {
     console.error("YouTube Player Error: ", event.data);
-    setHasError(true); // Set error state
+    setHasError(true);
   };
 
   // Select video ID based on error state
