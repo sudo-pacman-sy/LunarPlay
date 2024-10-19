@@ -1,33 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@font-face {
-  font-family: "Cinzel Decorative";
-  src: url("src/Fonts/Cinzel_Decorative/CinzelDecorative-Regular.ttf")
-    format("truetype");
-}
-
-@font-face {
-  font-family: "Palanquin";
-  src: url("src/Fonts/Palanquin/Palanquin-Medium.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Raleway";
-  src: url("src/Fonts/Raleway/Raleway-VariableFont_wght.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Outfit";
-  src: url("src/Fonts/Outfit/Outfit-VariableFont_wght.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Bona Nova";
-  src: url("src/Fonts/Bona_Nova_SC/BonaNovaSC-Regular.ttf") format("truetype");
-}
 
 body {
   font-family: "Manrope", sans-serif;

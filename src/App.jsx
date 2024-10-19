@@ -1,5 +1,5 @@
-import HomePage from "./Homepage";
-import InfoPage from "./infoPage";
+import HomePage from "./pages/homepage/Homepage";
+import MovieInfo from "./pages/details/MovieInfo";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/movie/:id" element={<InfoPage />} />
+        <Route path="/movie/:id" element={<MovieInfo />} />
       </Routes>
     </Router>
   );

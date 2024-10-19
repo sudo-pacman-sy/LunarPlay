@@ -19,7 +19,7 @@ export default {
         afacad: ['"Afacad Flux"', "serif"],
         caveat: ['"Caveat Brush"', "serif"],
         shadows: ['"Shadows Into Light Two"', "serif"],
-        manrope: ['"Manrope"'],
+        manrope: ['"Manrope"', "serif"],
       },
     },
   },
