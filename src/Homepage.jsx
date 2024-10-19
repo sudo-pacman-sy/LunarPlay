@@ -7,7 +7,7 @@ import Footer from "./Footer";
 const random = Math.floor(Math.random(20) * 10 + 1);
 
 const trendingtoday = [
-  "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
+  "https://api.themoviedb.org/3/trending/movie/week?language=en-US",
 ];
 
 const popularMovieUrls = [
