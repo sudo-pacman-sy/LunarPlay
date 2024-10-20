@@ -22,7 +22,7 @@ To get started with the Movie Database App, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/sudo-pacman-sy/movie-database-app.git
+   git clone https://github.com/sudo-pacman-sy/LunarPlay.git
    ```
 2. **Get your TMDB API key**
 
