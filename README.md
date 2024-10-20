@@ -26,13 +26,13 @@ To get started with the Movie Database App, follow these steps:
    ```
 2. **Get your TMDB API key**
 
-- Visit TMDB and sign up for an account.
+- Visit [TMDB](https://developer.themoviedb.org/docs/getting-started) and sign up for an account.
 - Navigate to your account settings and find your API key.
 
 3. **Create a .env file:**
 
 - In the root directory of the project, create a .env file.
-- Add your [TMDB](https://developer.themoviedb.org/docs/getting-started) API key to the .env file:
+- Add your TMDB API key to the .env file:
 
   ```bash
   TMDB_KEY=your_api_key_here
