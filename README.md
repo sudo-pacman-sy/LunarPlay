@@ -1,4 +1,4 @@
-# Movie Database App
+# Movie Discovery App
 
 A web application that allows users to browse, search, and manage their favorite movies. Discover detailed information, ratings, and reviews to enhance your movie-watching experience.
 
@@ -22,7 +22,7 @@ To get started with the Movie Database App, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/movie-database-app.git
+   git clone https://github.com/sudo-pacman-sy/movie-database-app.git
    ```
 2. **Get your TMDB API key**
 
@@ -56,9 +56,13 @@ To get started with the Movie Database App, follow these steps:
 
 ## Screenshots
 
+- **HomePage**
+
 ![Homepage](images/homepage1.png)
 
 ![Homepage](images/homepage2.png)
+
+- **Movie Details**
 
 ![Movie Details](images/details1.png)
 
