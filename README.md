@@ -35,7 +35,13 @@ To get started with the Movie Database App, follow these steps:
 - Add your TMDB API key to the .env file:
 
   ```bash
-  TMDB_KEY=your_api_key_here
+  VITE_TMDB_KEY=your_api_key_here
+  ```
+
+- Or use default api key as given below:
+
+  ```bash
+  VITE_TMDB_KEY=Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZDNmZjVjYzZmOTNiNDMyM2NkYTA5MjQ4ZDY4NmEzMiIsIm5iZiI6MTcyNzIxMTAwMi40MDE5MzcsInN1YiI6IjY2ZWE1YTdmYjI5MTdlYjE4MDBiNDNjNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XvARcWgeDRaQPgPynSYoycKokoalaHO3qI5GbNl82l4
   ```
 
 4. **Install all dependencies:**
