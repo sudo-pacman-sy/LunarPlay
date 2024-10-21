@@ -16,13 +16,15 @@
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.7.7",
+    "express": "^4.21.1",
     "node-fetch": "^2.7.0",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-multi-carousel": "^2.8.5",
     "react-router-dom": "^6.26.2",
-    "react-youtube": "^10.1.0"
+    "react-youtube": "^10.1.0",
+    "vercel": "^37.11.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
