@@ -4,7 +4,7 @@ function InfoCast(props) {
   const castMembers = props.cast.map((cast) => ({
     profileImage: cast.profilePath
       ? `https://image.tmdb.org/t/p/w200${cast.profilePath}`
-      : "../src/assets/emptyprofile.jpg",
+      : "/assets/emptyprofile.jpg",
     name: cast.name,
     character: cast.character,
   }));
