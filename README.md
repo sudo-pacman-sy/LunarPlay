@@ -74,6 +74,11 @@ To get started with the Movie Database App, follow these steps:
 
 ![Movie Details](images/details2.png)
 
+## Live Demo
+
+Check out the live version of the project hosted on **Vercel**:  
+👉 [Movie Discovery Platform - LunarPlay](https://moviediscoveryplatform-sudo-pacman-sys-projects.vercel.app/)
+
 ## Usage
 
 Use the application to explore recommended movies and click on a movie to view detailed information.
