@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import Carousel from "react-multi-carousel";
@@ -7,6 +8,7 @@ import fetchMovies from "../../api/Movies";
 
 function MainPoster({ api }) {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const responsive = {
@@ -39,6 +41,8 @@ function MainPoster({ api }) {
         setMovies(moviedata);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
       }
     }
     respond();
@@ -47,6 +51,20 @@ function MainPoster({ api }) {
   const handleClick = (id) => {
     navigate(`/movie/${id}`);
   };
+
+  if (loading) {
+    return (
+      <div className="p-4">
+        <Skeleton
+          animation="wave"
+          sx={{ bgcolor: "grey.1000" }}
+          variant="rounded"
+          width={1280}
+          height={470}
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="cursor-grab">

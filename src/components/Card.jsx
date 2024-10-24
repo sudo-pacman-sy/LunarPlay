@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Skeleton, Backdrop, CircularProgress } from "@mui/material";
 import PropTypes from "prop-types";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -9,7 +10,9 @@ import starImage from "/assets/star.png";
 function Card({ api }) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [backdropOpen, setBackdropOpen] = useState(false);
   const navigate = useNavigate();
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -54,47 +57,70 @@ function Card({ api }) {
     respond();
   }, [api]);
 
-  const handleClick = (id) => {
+  const handleClick = async (id) => {
+    setBackdropOpen(true);
+    await fetchMovies(id);
     navigate(`/movie/${id}`);
+    setBackdropOpen(false);
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="mx-5 my-4 flex gap-[20px] overflow-hidden w-full">
+        {[...Array(6)].map((_, i) => (
+          <Skeleton
+            key={i}
+            sx={{ bgcolor: "grey.500" }}
+            variant="rounded"
+            width={350}
+            height={362}
+          />
+        ))}
+      </div>
+    );
   }
 
   return (
-    <div className="pl-4">
-      <Carousel
-        responsive={responsive}
-        infinite={true}
-        minimumTouchDrag={80}
-        itemClass="-mr-6 pl-2"
+    <>
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={backdropOpen}
       >
-        {movies.map((movie, index) => (
-          <div
-            className="bg-[#E6F5FF] p-3 min-h-[365px] max-h-[365px] min-w-[217px] max-w-[217px] rounded-[5px] hover:scale-[1.05] cursor-pointer transition duration-200 ease-in-out border-2 border-sky-400 my-3 select-none"
-            key={index}
-            onClick={() => {
-              handleClick(movie.id);
-            }}
-          >
-            <img
-              className="min-w-48 max-w-48 rounded-xl pointer-events-none "
-              src={`https://image.tmdb.org/t/p/w780${movie.posterPath}`}
-              alt=""
-            />
-            <h3 className="pt-1 text-lg truncate">{movie.title}</h3>
-            <div className="flex justify-between">
-              <p className="text-sm text-blue-700">{movie.date}</p>
-              <p className="flex text-sm gap-0.4">
-                <img src={starImage} className="size-4 mt-0.5 mr-[2px]" />
-                {movie.voteAverage.toFixed(1)}
-              </p>
+        <CircularProgress color="inherit" />
+      </Backdrop>
+      <div className="pl-4">
+        <Carousel
+          responsive={responsive}
+          infinite={true}
+          minimumTouchDrag={80}
+          itemClass="-mr-6 pl-2"
+        >
+          {movies.map((movie, index) => (
+            <div
+              className="bg-[#E6F5FF] p-3 min-h-[365px] max-h-[365px] min-w-[217px] max-w-[217px] rounded-[5px] hover:scale-[1.05] cursor-pointer transition duration-200 ease-in-out border-2 border-sky-400 my-3 select-none"
+              key={index}
+              onClick={() => {
+                handleClick(movie.id);
+              }}
+            >
+              <img
+                className="min-w-48 max-w-48 rounded-xl pointer-events-none -ml-[1px]"
+                src={`https://image.tmdb.org/t/p/w780${movie.posterPath}`}
+                alt=""
+              />
+              <h3 className="pt-1 text-lg truncate">{movie.title}</h3>
+              <div className="flex justify-between">
+                <p className="text-sm text-blue-700">{movie.date}</p>
+                <p className="flex text-sm gap-0.4">
+                  <img src={starImage} className="size-4 mt-0.5 mr-[2px]" />
+                  {movie.voteAverage.toFixed(1)}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
-      </Carousel>
-    </div>
+          ))}
+        </Carousel>
+      </div>
+    </>
   );
 }
 

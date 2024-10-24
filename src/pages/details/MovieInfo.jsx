@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Backdrop, CircularProgress } from "@mui/material";
 import fetchMovieDetails from "../../api/MovieDetail";
 import InfoPoster from "./InfoBackdrop";
 import InfoCard from "./InfoCard";
@@ -7,6 +8,7 @@ import Card from "../../components/Card";
 import { Similarmovies } from "../../components/Headings";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+
 function MovieInfo() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
@@ -17,7 +19,6 @@ function MovieInfo() {
     async function fetchData() {
       try {
         const movieData = await fetchMovieDetails(id);
-
         setMovie(movieData);
       } catch (error) {
         console.error("Error fetching movie details:", error);
@@ -30,7 +31,21 @@ function MovieInfo() {
   }, [id]);
 
   if (loading) {
-    return <div className="bg-white">Loading Information...</div>;
+    return (
+      <>
+        <div className="h-screen w-full">
+          <Backdrop
+            open={true}
+            sx={{ backgroundColor: "#111111", color: "#fff" }}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+          <div className="absolute inset-0 text-white flex items-center justify-center mt-20 text-xl tracking-wide">
+            Loading...
+          </div>
+        </div>
+      </>
+    );
   }
 
   if (!movie.data) {
