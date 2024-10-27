@@ -20,19 +20,24 @@ function Card({ api }) {
       slidesToSlide: 2,
     },
     desktop: {
-      breakpoint: { max: 3000, min: 1024 },
+      breakpoint: { max: 3000, min: 900 },
       items: 5,
       slidesToSlide: 2,
     },
     tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 1,
-      slidesToSlide: 1,
+      breakpoint: { max: 900, min: 700 },
+      items: 4,
+      slidesToSlide: 2,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-      slidesToSlide: 1,
+      breakpoint: { max: 700, min: 420 },
+      items: 3,
+      slidesToSlide: 2,
+    },
+    smallmobile: {
+      breakpoint: { max: 420, min: 0 },
+      items: 2,
+      slidesToSlide: 2,
     },
   };
 
@@ -88,23 +93,23 @@ function Card({ api }) {
       >
         <CircularProgress color="inherit" />
       </Backdrop>
-      <div className="pl-4">
+      <div className="lg:pl-4 ml-2">
         <Carousel
           responsive={responsive}
           infinite={true}
-          minimumTouchDrag={80}
-          itemClass="-mr-6 pl-2"
+          minimumTouchDrag={20}
+          itemClass="lg:-mr-6 mx-10 lg:pl-2 -ml-2"
         >
           {movies.map((movie, index) => (
             <div
-              className="bg-[#E6F5FF] p-3 min-h-[365px] max-h-[365px] min-w-[217px] max-w-[217px] rounded-[5px] hover:scale-[1.05] cursor-pointer transition duration-200 ease-in-out border-2 border-sky-400 my-3 select-none"
+              className="bg-[#E6F5FF] p-3 w-[170px] lg:h-[365px] lg:w-[217px] rounded-[5px] hover:scale-[1.05] cursor-pointer transition duration-200 ease-in-out border-2 border-sky-400 my-3 select-none"
               key={index}
               onClick={() => {
                 handleClick(movie.id);
               }}
             >
               <img
-                className="min-w-48 max-w-48 rounded-xl pointer-events-none -ml-[1px]"
+                className="w-36 lg:w-48 rounded-xl pointer-events-none"
                 src={`https://image.tmdb.org/t/p/w780${movie.posterPath}`}
                 alt=""
               />

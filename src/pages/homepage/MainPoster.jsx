@@ -78,43 +78,44 @@ function MainPoster({ api }) {
         autoPlaySpeed={6000}
       >
         {movies.map((movie, index) => (
-          <div className="" key={index}>
-            <div>
+          <div key={index}>
+            <div className="relative">
               <img
                 className="size-full max-h-[500px] object-contain object-fill relative pointer-events-none brightness-95 rounded-xl"
                 src={`https://image.tmdb.org/t/p/original${movie.backdropPath}`}
                 alt=""
               />
-              <div className="absolute top-0 left-0 bg-gradient-to-r from-stone-950 from-10% via-stone-900 via-30% min-w-[500px] min-h-[32rem] opacity-85">
-                <div className="min-w-[400px] min-h-[32rem] select-none">
-                  <div className="max-w-[500px] max-h-[450px] line-clamp-2">
+              <div className="absolute top-0 left-0 bg-gradient-to-r from-stone-950 from-10% via-stone-900 via-30%  min-w-[200px] lg:min-w-[500px] min-h-full lg:min-h-[32rem] opacity-85">
+                <div className="select-none">
+                  <div className="max-w-[210px] lg:max-w-[500px] line-clamp-2">
                     {/*Poster Title Div*/}
-                    <p className="pt-20 pl-5 font-cinzel text-[70px] break-words leading-tight text-slate-50">
+                    <p className="pt-8 pl-2 lg:pt-20 lg:pl-5 font-cinzel text-[25px] lg:text-[70px] break-words leading-tight text-slate-50">
                       {movie.title}
                     </p>
                   </div>
-                  <div className="max-w-[470px] max-h-[450px] line-clamp-4">
+                  <div className="max-w-[170px] lg:max-w-[470px] max-h-[450px] line-clamp-4">
                     {/*Poster Title Info Div*/}
-                    <p className="pl-5 left-5 font-palanquin text-xl text-slate-50">
+                    <p className="pl-2 lg:pl-5 left-5 font-palanquin text-xs lg:text-xl text-slate-50">
                       {movie.overview}
                     </p>
                   </div>
+
                   <div
                     id="button"
                     onClick={() => {
                       handleClick(movie.id);
                     }}
-                    className="absolute bottom-16 left-6 min-h-12 min-w-36 bg-transparent border-2 text-red-600 rounded-xl cursor-pointer"
+                    className="absolute bottom-10 left-2 lg:bottom-16 lg:left-6 h-8 w-28 lg:h-12 lg:w-36 border-2 text-red-600 rounded-xl cursor-pointer "
                   >
-                    <div className="absolute top-0 left-0 bg-white/15 pb-2.5 rounded-xl min-h-11 min-w-[140px]"></div>
-                    <button className="pt-2.5 px-8 pb-2.5 backdrop-blur-md rounded-xl flex font-bold">
+                    <div className="absolute top-0 left-0 bg-white/15 pb-2.5 rounded-xl h-full w-full"></div>
+                    <p className="py-1.5 flex  justify-center lg:pt-2.5 lg:justify-center lg:pb-2.5 h-full backdrop-blur-md text-xs lg:text-base rounded-xl font-bold">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="size-6 pr-1 "
+                        className="size-4 pr-0.5 lg:size-6 lg:pr-1 "
                       >
                         <path
                           strokeLinecap="round"
@@ -123,12 +124,12 @@ function MainPoster({ api }) {
                         />
                       </svg>
                       More Info
-                    </button>
+                    </p>
                   </div>
                 </div>
               </div>
-              <div className="absolute bottom-0 bg-gradient-to-t from-[#111111] min-w-full min-h-16"></div>
             </div>
+            <div className="absolute bottom-0 bg-gradient-to-t from-[#111111] w-full lg:h-14 h-10"></div>
           </div>
         ))}
       </Carousel>
