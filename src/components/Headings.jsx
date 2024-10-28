@@ -42,7 +42,7 @@ function TopRated() {
 
 function Trailer() {
   return (
-    <div className="py-2 pb-3 text-3xl">
+    <div className="w-screen py-2 lg:-ml-2 pl-2 pb-3 text-3xl">
       <span className="font-outfit text-[#E8B86D]">Trailer</span>
     </div>
   );
@@ -50,7 +50,7 @@ function Trailer() {
 
 function Castheading() {
   return (
-    <div className="pb-3 text-3xl">
+    <div className="w-screen pb-3 lg:-ml-2 pl-2 text-3xl">
       <span className="font-outfit text-[#E8B86D]">Casts</span>
     </div>
   );
@@ -58,7 +58,7 @@ function Castheading() {
 
 function Similarmovies() {
   return (
-    <div className="p-4 pt-8 pb-2 text-3xl">
+    <div className="w-screen p-4 pt-8 pb-2 text-3xl">
       <span className="font-outfit text-[#E8B86D]">Similar Movies</span>
     </div>
   );

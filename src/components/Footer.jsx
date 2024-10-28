@@ -68,7 +68,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center py-1 bg-black">
+      <div className="flex justify-center py-2 bg-black">
         <p className="text-gray-500 text-sm">
           &copy; 2024 LunarPlay. All rights reserved.Data powered by{" "}
           <span className="underline">

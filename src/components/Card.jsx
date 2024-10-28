@@ -72,7 +72,11 @@ function Card({ api }) {
   if (loading) {
     return (
       <div className="mx-5 my-4 flex gap-[20px] overflow-hidden w-full">
-        {[...Array(6)].map((_, i) => (
+        {[
+          ...Array(
+            window.innerWidth < 640 ? 3 : window.innerWidth < 1024 ? 4 : 6
+          ),
+        ].map((_, i) => (
           <Skeleton
             key={i}
             sx={{ bgcolor: "grey.500" }}
@@ -98,7 +102,7 @@ function Card({ api }) {
           responsive={responsive}
           infinite={true}
           minimumTouchDrag={20}
-          itemClass="lg:-mr-6 mx-10 lg:pl-2 -ml-2"
+          itemClass="lg:-mr-[14px] mx-10 lg:pl-2 -ml-2"
         >
           {movies.map((movie, index) => (
             <div
