@@ -90,11 +90,11 @@ function Navbar() {
           />
         </div>
 
-        <div className="hidden md:flex absolute top-1 right-4 p-2">
+        {/* <div className="hidden md:flex absolute top-1 right-4 p-2">
           <button className="bg-violet-500 hover:bg-violet-600 px-4 py-[6px] rounded-md">
             Login
           </button>
-        </div>
+        </div> */}
 
         <Drawer
           anchor="right"

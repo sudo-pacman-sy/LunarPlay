@@ -1,11 +1,10 @@
 import { Trailer } from "../../components/Headings";
-import YouTubePlayer from "./YoutubePlayer";
-
+import YoutubePlayer from "./YoutubePlayer";
 function InfoTrailer(props) {
   return (
     <>
       <Trailer />
-      <YouTubePlayer videoIds={props.videokey} />
+      <YoutubePlayer videoIds={props.videokey} />
     </>
   );
 }

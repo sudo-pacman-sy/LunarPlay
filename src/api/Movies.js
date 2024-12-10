@@ -11,25 +11,47 @@ const options = {
 
 async function fetchMovies(apiUrls = []) {
   try {
-    const responses = await Promise.all(
-      apiUrls.map((url) => axios.get(url, options))
-    );
+    let remainingRetries = 3;
+    let validResponses = [];
 
-    const allMovies = responses.flatMap((response) =>
-      response.data.results.map((movie) => ({
-        title: movie.title,
-        date: movie.release_date.slice(0, 4),
-        overview: movie.overview,
-        voteAverage: movie.vote_average,
-        posterPath: movie.poster_path,
-        backdropPath: movie.backdrop_path,
-        id: movie.id,
-      }))
-    );
+    while (remainingRetries > 0) {
+      const responses = await Promise.all(
+        Object.values(apiUrls).map((url) =>
+          axios
+            .get(url, options)
+            .then((response) => response?.data?.results || [])
+            .catch((error) => {
+              console.warn(`Error fetching from ${url}:`, error.message);
+              return [];
+            })
+        )
+      );
 
-    return allMovies;
+      const moviesFromResponses = responses.flatMap((movies) =>
+        movies.map((movie) => ({
+          title: movie.title,
+          date: movie.release_date?.slice(0, 4) || "Unknown",
+          overview: movie.overview || "No overview",
+          voteAverage: movie.vote_average || 0,
+          posterPath: movie.poster_path || "",
+          backdropPath: movie.backdrop_path || "",
+          id: movie.id || 0,
+        }))
+      );
+
+      validResponses = validResponses.concat(moviesFromResponses);
+
+      if (validResponses.length > 0) {
+        break;
+      }
+
+      remainingRetries--;
+      await new Promise((resolve) => setTimeout(resolve, 100));
+    }
+
+    return validResponses;
   } catch (error) {
-    console.error("Error fetching movies:", error);
+    console.error("Error fetching movies:", error.message);
     return [];
   }
 }
